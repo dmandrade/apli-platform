@@ -15,6 +15,9 @@
         "apli/core": "~1.0"
     },
     "require-dev": {
+        "fzaninotto/faker": "~1.0",
+        "swiftmailer/swiftmailer": "~5.0",
+        "symfony/polyfill": "^1.8"
     },
     "autoload": {
         "psr-4": {
