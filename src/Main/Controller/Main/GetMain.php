@@ -20,15 +20,12 @@
 namespace Main\Controller\Main;
 
 
-use Apli\Http\Message\ServerRequest;
-use Apli\Http\Response\DefaultResponse;
+use Apli\Core\Controller\AbstractController;
 
-class GetMain
+class GetMain extends AbstractController
 {
-    public function __invoke(ServerRequest $request)
+    public function doExecute()
     {
-        $response = new DefaultResponse();
-        $response->getBody()->write('<h1>Hello, World!</h1>');
-        return $response;
+        return '<h1>Hello, World!</h1><br>' . $this->request->get('users');
     }
 }
