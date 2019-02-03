@@ -1,0 +1,7 @@
+{
+    "version": 2,
+    "paths": [
+        "framework/apli/core",
+        "framework/apli/framework"
+    ]
+}

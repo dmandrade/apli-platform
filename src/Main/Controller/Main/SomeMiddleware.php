@@ -42,7 +42,7 @@ class SomeMiddleware implements Middleware
         $response = $handler->handle($request);
         if($user) {
             $response = new DefaultResponse();
-            $response->getBody()->write('<h1>Hello, World! '. $user.'</h1>');
+            $response->getBody()->write('<h1>Hello, '. $user.'</h1>');
         }
 
         // ...

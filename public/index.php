@@ -11,9 +11,8 @@
 | loading any of our classes later on. It feels nice to relax.
 |
 */
-$root = __DIR__ . '/..';
 
-require $root . '/bootstrap/autoload.php';
+require '../bootstrap/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +26,10 @@ require $root . '/bootstrap/autoload.php';
 |
 */
 /** @var \Apli\Web\Application $app */
-$app = require_once $root . '/bootstrap/app.php';
+$app = require '../bootstrap/app.php';
 
 // map a route
-$app->getRouter()
+$app->router
     ->get('/', \Main\Controller\Main\GetMain::class)
     ->middleware(new \Main\Controller\Main\SomeMiddleware);
 

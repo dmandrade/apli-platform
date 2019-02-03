@@ -1,4 +1,6 @@
+#!/usr/bin/env php
 <?php
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
@@ -10,7 +12,7 @@
 | loading any of our classes later on. It feels nice to relax.
 |
 */
-$root = __DIR__ . '/..';
+$root = __DIR__;
 
 require $root . '/bootstrap/autoload.php';
 
@@ -26,7 +28,6 @@ require $root . '/bootstrap/autoload.php';
 |
 */
 
-/** @var \Apli\Web\DevApplication $app */
-$app = require $root . '/bootstrap/dev.php';
+$app = require $root . '/bootstrap/console.php';
 
 $app->execute();

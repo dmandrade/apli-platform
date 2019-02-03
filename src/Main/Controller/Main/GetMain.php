@@ -26,6 +26,8 @@ class GetMain extends AbstractController
 {
     public function doExecute()
     {
-        return '<h1>Hello, World!</h1><br>' . $this->request->get('users');
+        $view = $this->getView();
+
+        return $view->render();
     }
 }
