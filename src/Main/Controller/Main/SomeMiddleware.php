@@ -19,20 +19,20 @@
 
 namespace Main\Controller\Main;
 
-
-use Apli\Http\Message\ServerRequest;
 use Apli\Http\Response\DefaultResponse;
-use Apli\Http\Server\Middleware;
-use Apli\Http\Server\RequestHandler;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class SomeMiddleware implements Middleware
+class SomeMiddleware implements MiddlewareInterface
 {
     /**
-     * @param ServerRequest  $request
-     * @param RequestHandler $handler
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
      * @return ResponseInterface
      */
-    public function process(ServerRequest $request, RequestHandler $handler)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $queryParams = $request->getQueryParams();
         $user = isset($queryParams['user']) ? $queryParams['user'] : null;
