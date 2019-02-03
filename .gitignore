@@ -1,5 +1,6 @@
 ### Project specific ###
 public/asset/
+framework/
 
 ### Windows ###
 # Windows thumbnail cache files
