@@ -1,16 +1,9 @@
 <?php
-/*
-|--------------------------------------------------------------------------
-| Check Allowed Ips
-|--------------------------------------------------------------------------
-|
-| For the development environment the first thing we're going to do is
-| check which ips you are allowed to access.
-|
-*/
+
+use Apli\Web\DevApplication;
 
 $config = require APLI_CONFIG . '/dev.php';
-$allowIps = (require APLI_CONFIG . '/dev.php')['allow_ips'] ?? '';
+$allowIps = $config['allow_ips'] ?? '';
 
 if ($allowIps !== 'all') {
     $allowIps = array_merge(
@@ -29,30 +22,8 @@ if ($allowIps !== 'all') {
     }
 }
 
-/*
-|--------------------------------------------------------------------------
-| Create The Application
-|--------------------------------------------------------------------------
-|
-| The first thing we will do is create a new Laravel application instance
-| which serves as the "glue" for all the components of Laravel, and is
-| the IoC container for the system binding all of the various parts.
-|
-*/
-$app = new \Apli\Web\DevApplication;
+$app = new DevApplication;
 
 define('APLI_DEBUG', $app->get('system.debug'));
-
-
-/*
-|--------------------------------------------------------------------------
-| Return The Application
-|--------------------------------------------------------------------------
-|
-| This script returns the application instance. The instance is given to
-| the calling script so we can separate the building of the instances
-| from the actual running of the application and sending responses.
-|
-*/
 
 return $app;

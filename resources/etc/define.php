@@ -13,7 +13,7 @@
 use Symfony\Component\Dotenv\Dotenv;
 
 // ROOT PATHS
-define('APLI_ROOT', realpath(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'));
+define('APLI_ROOT', dirname(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'));
 define('APLI_BIN', APLI_ROOT.DIRECTORY_SEPARATOR.'bin');
 define('APLI_PUBLIC', APLI_ROOT.DIRECTORY_SEPARATOR.'public');
 define('APLI_RESOURCES', APLI_ROOT.DIRECTORY_SEPARATOR.'resources');

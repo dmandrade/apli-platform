@@ -12,14 +12,9 @@
 
 namespace Apli\Web;
 
-use Apli\Data\Map;
-use Apli\Environment\Environment;
-use Psr\Http\Message\ServerRequestInterface;
-
 /**
- * The DevApplication class.
- *
- * @since  2.1.1
+ * Class DevApplication
+ * @package Apli\Web
  */
 class DevApplication extends Application
 {
@@ -29,18 +24,4 @@ class DevApplication extends Application
      * @var  string
      */
     protected $name = 'dev';
-
-    /**
-     * DevApplication constructor.
-     * @param ServerRequestInterface|null $request
-     * @param Map|null                    $config
-     * @param Environment|null            $environment
-     * @throws \Apli\Uri\UriException
-     */
-    public function __construct(ServerRequestInterface $request = null, Map $config = null, Environment $environment = null)
-    {
-        parent::__construct($request, $config, $environment);
-
-        $this->init();
-    }
 }

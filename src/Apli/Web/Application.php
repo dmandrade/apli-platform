@@ -21,44 +21,10 @@ use Apli\Core\Application\WebApplication;
 class Application extends WebApplication
 {
     /**
-     * Property name.
-     *
-     * @var  string
-     */
-    protected $name = 'web';
-
-    /**
      * Property configPath.
      *
      * @var  string
      */
     protected $rootPath = APLI_ROOT;
 
-    /**
-     * initialise
-     *
-     * @return  void
-     */
-    protected function init()
-    {
-        parent::init();
-    }
-
-    /**
-     * Prepare execute hook.
-     *
-     * @return  void
-     */
-    protected function prepareExecute()
-    {
-        //
-    }
-
-    /**
-     * Post execute hook.
-     */
-    protected function postExecute()
-    {
-        //
-    }
 }
