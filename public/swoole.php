@@ -29,7 +29,8 @@ require $root . '/bootstrap/autoload.php';
 /** @var \Apli\Swoole\HttpApplication $app */
 $app = require $root . '/bootstrap/swoole/web.php';
 
-$app->getRouter()->addRoute('/', \Main\Controller\Main\GetMain::class);
+$app->getRouter()->get('/', \Main\Controller\Main\GetMain::class);
+$app->getRouter()->get('/index', \Main\Controller\Main\GetMain::class);
 //$app->getRouter()->get('/', \Main\Controller\Main\GetMain::class);
 //$app->getRouter()->get('/{id}', \Main\Controller\Main\GetSubgrupo::class);
 

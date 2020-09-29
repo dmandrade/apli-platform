@@ -29,6 +29,6 @@ require $root . '/bootstrap/autoload.php';
 /** @var \Apli\Web\Application $app */
 $app = require $root . '/bootstrap/web.php';
 
-$app->getRouter()->addRoute('/', \Main\Controller\Main\GetMain::class);
+$app->getRouter()->get('/', \Main\Controller\Main\GetMain::class);
 
 $app->execute();

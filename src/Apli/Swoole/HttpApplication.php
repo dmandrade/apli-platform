@@ -14,6 +14,7 @@ namespace Apli\Swoole;
 
 use Apli\Core\Application\WebApplication;
 use Apli\Http\Emitter\SwooleEmitter;
+use Apli\Http\ServerRequestCreator;
 use Apli\Router\Route;
 use Swoole\Runtime as SwooleRuntime;
 use Swoole\HTTP\Server as SwooleHttpServer;
@@ -55,23 +56,26 @@ class HttpApplication extends WebApplication
         });
 
         $this->swooleServer->set([
-            'worker_num' => 2,
-            'max_conn' => 1024,
+            //'worker_num' => 3,
+            //'max_conn' => 1024,
+            'open_http2_protocol' => true,
         ]);
     }
 
     /**
-     * Post execute hook.
-     * @param $response
-     * @return void
+     * @return mixed|void
      */
+    public function doExecute()
+    {
+        $this->swooleServer->on('request', function ($swooleRequest, $swooleResponse) {
+            $this->request = $this->serverRequestCreator->fromSwoole($swooleRequest);
+            $emitter = new SwooleEmitter($swooleResponse);
+            $emitter->emit(parent::doExecute());
+        });
+    }
+
     protected function postExecute($response): void
     {
-        $this->swooleServer->on('request', function ($swooleRequest, $swooleResponse) use ($response) {
-            $emitter = new SwooleEmitter($swooleResponse);
-            $emitter->emit($response);
-        });
-
         $this->swooleServer->start();
     }
 }
