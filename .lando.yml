@@ -1,0 +1,35 @@
+name: apli
+proxy:
+  appserver:
+    - apli.lndo.site
+services: # Define your services
+  appserver:  # Create a web server container
+    type: php:7.4 # Specify what version of php to use
+    via: nginx   # This could be nginx, should you choose so
+    webroot: public  # Specify webroot
+    xdebug: false
+    config:
+        server: config.nginx
+        vhosts: config/default.conf
+    composer:
+        - franzl/studio
+    build_as_root:
+      - apt-get update -y
+      - apt install libxslt1-dev -y
+      - docker-php-ext-install xsl
+      - docker-php-ext-install sockets
+      - yes '' | pecl install swoole
+      - docker-php-ext-enable swoole
+    run:
+      - composer install
+      - php public/swoole.php
+tooling:  # These toolings allow you to connect land <command> to the appropriate containers
+  composer: # Call with "lando composer..."
+    service: appserver
+    description: Run composer commands in app
+    cmd: composer --ansi
+  php:      # Call with "lando php..."
+    service: appserver
+  apli:      # Call with "lando php..."
+    service: appserver
+    cmd: php apli
